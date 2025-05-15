@@ -1,0 +1,9 @@
+numpy
+opencv-python
+torch
+insightface
+ultralytics
+scikit-image
+onnxruntime
+transformers
+pillow 

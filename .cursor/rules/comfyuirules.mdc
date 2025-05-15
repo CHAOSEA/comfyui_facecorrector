@@ -1,0 +1,32 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+  - This project involves building modular, reusable, and maintainable Python nodes for ComfyUI.
+  - Do not change node structure, input/output schema, interface logic, or category placement without explicit approval.
+  - For any error or modification:
+      - Clearly identify the problem.
+      - Propose 2–3 solution strategies.
+      - Choose the best option with full reasoning and validate it in the context of the existing node system.
+  - All submitted code must:
+      - Be logically complete and stable.
+      - Register properly in ComfyUI.
+      - Be importable, usable, and discoverable.
+      - Require no extra patching or manual fixing post-delivery.
+  - Do not submit partial or broken code (e.g., compiles but doesn’t work).
+  - Never modify unrelated code or configuration unless explicitly asked.
+      - Especially avoid breaking legacy behavior or previously working features.
+  - All changes must:
+      - Preserve node stability
+      - Maintain code clarity and consistency with ComfyUI conventions
+      - Enhance long-term maintainability
+  - Avoid repeating previously fixed bugs. Ensure all improvements reflect learning and higher engineering insight.
+  - If a goal cannot be achieved in a single step, use multi-pass internal refinement without exposing half-solutions to users.
+  - The development workflow is guided by AI and must support full-cycle engineering:
+      - Requirement understanding → Code implementation → Logical inspection → Testing readiness
+  - Your final code must always:
+      - Be complete
+      - Be reliable
+      - Reflect intelligent planning and mature engineering design
