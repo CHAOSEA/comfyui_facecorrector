@@ -13,6 +13,14 @@
 
 </div>
 
+## 📸 工作流程示例
+
+### InsightFace 模式
+![InsightFace模式工作流程](workflow/facecorrector_workflow_insightface.png)
+
+### YOLO 模式
+![YOLO模式工作流程](workflow/facecorrector_workflow_yolo.png)
+
 ## ✨ 功能特点
 
 - 🎯 **智能人脸检测**：支持 YOLO 和 InsightFace 双引擎检测
@@ -21,10 +29,6 @@
 - 🎭 **高质量蒙版**：支持多种蒙版生成方法 (jonathandinu, bisenet)
 - 📏 **灵活调整**：通过 face_ratio 精确控制人脸比例
 - 💡 **稳定可靠**：适应各种光照条件，支持极端角度处理
-
-## 📸 效果展示
-
-![基本工作流程示例](workflow/facecorrector.png)
 
 ## 🚀 快速开始
 
@@ -56,6 +60,24 @@ pip install -r requirements.txt
 - 模型文件将保存在 `ComfyUI/models/` 对应目录下
 - 确保网络连接正常，模型下载可能需要一些时间
 
+### 必需模型文件
+
+本节点需要以下模型文件：
+
+1. YOLO人脸检测模型：
+   - 路径：`ComfyUI/models/ultralytics/bbox/face_yolov8m.pt`
+   - 用途：快速准确的人脸检测
+
+2. InsightFace模型：
+   - 路径：`ComfyUI/models/insightface/models/buffalo_l`
+   - 用途：人脸分析和关键点检测
+
+3. BiSeNet模型：
+   - 路径：`ComfyUI/models/bisenet/resnet34.onnx`
+   - 用途：精确的人脸分割蒙版生成
+
+首次运行时会自动下载这些模型文件。如果下载失败，请参考[模型下载指南](docs/model_download_guide.md)手动下载。
+
 ## 📖 使用指南
 
 ### FaceCorrector 节点
@@ -77,11 +99,11 @@ pip install -r requirements.txt
 ### FacePaster 节点
 
 - **输入参数**：
-  - `original_image`：原始图像
-  - `face_image`：修改后的人脸图像
-  - `warp_matrix`：从 FaceCorrector 获得的变换矩阵
+  - `image`：原始图像
+  - `corrected_face`：修改后的人脸图像
+  - `face_mask`：面部蒙版，用于平滑混合
   - `use_mask`：是否使用蒙版 (是, 否)
-  - `face_mask`：(可选) 面部蒙版，用于平滑混合
+  - `warp_matrix`：(可选) 从 FaceCorrector 获得的变换矩阵
 
 - **输出**：
   - `image`：合成后的完整图像
@@ -148,4 +170,18 @@ pip install -r requirements.txt
   year = {2025},
   url = {https://github.com/CHAOSEA/comfyui_facecorrector}
 }
-``` 
+```
+
+## 🌟 支持与反馈
+
+如果这个节点对您的工作有所帮助，欢迎给我们一个 Star ⭐，这是对我们最好的鼓励！
+
+### 社区支持
+
+- 遇到使用问题？
+- 有定制化需求？
+- 想交流经验心得？
+
+欢迎加入我们的 QQ 交流群：247228975
+
+我们致力于为每一位用户提供专业的技术支持和解决方案。 
