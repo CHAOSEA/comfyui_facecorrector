@@ -1,0 +1,13 @@
+# Required dependencies
+numpy
+opencv-python
+torch
+insightface
+ultralytics
+scikit-image
+onnxruntime
+pillow
+
+# Optional dependencies (for additional features)
+# transformers  # For jonathandinu face parsing
+# mediapipe    # For alternative face detection 
