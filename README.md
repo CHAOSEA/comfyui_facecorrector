@@ -27,10 +27,10 @@ ComfyUI 人脸处理节点，提供人脸检测、校正、对齐和蒙版生成
 
 ## 📸 工作流程示例
 
-### InsightFace 模式
+### InsightFace 模式 (人脸校正)
 ![InsightFace模式工作流程](workflow/facecorrector_workflow_insightface.png)
 
-### YOLO 模式
+### YOLO 模式 (人脸裁切)
 ![YOLO模式工作流程](workflow/facecorrector_workflow_yolo.png)
 
 ## ✨ 功能特点
