@@ -104,7 +104,7 @@ pip install -r requirements.txt
   - `face_ratio`：人脸在图像中的占比 (0.5-1.3)
   - `align_mode`：对齐模式 (arcface)
   - `mask_type`：蒙版类型 (jonathandinu, bisenet, none)
-  - `auto_rotate`：是否启用自动旋转 (是, 否)
+
 
 - **输出**：
   - `aligned_face`：对齐后的人脸图像

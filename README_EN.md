@@ -104,7 +104,7 @@ These models will be downloaded automatically on first run. If download fails, p
   - `face_ratio`: Face height ratio in image (0.5-1.3)
   - `align_mode`: Alignment mode (arcface)
   - `mask_type`: Mask type (jonathandinu, bisenet, none)
-  - `auto_rotate`: Enable automatic rotation (yes, no)
+
 
 - **Outputs**:
   - `aligned_face`: Aligned face image
