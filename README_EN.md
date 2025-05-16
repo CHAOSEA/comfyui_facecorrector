@@ -9,22 +9,41 @@
 
 English | [简体中文](README.md)
 
-A powerful and precise ComfyUI node for face processing, supporting intelligent face detection, automatic rotation correction, precise alignment, and mask generation.
+A ComfyUI node for face processing, providing face detection, correction, alignment, and mask generation capabilities.
 
 </div>
 
+## 💡 Main Applications
+
+This node is primarily designed for:
+- Image preprocessing before face/head swapping
+- Preprocessing before facial detail refinement (eyes, eyebrows, facial features)
+- Scenarios requiring unified face size and orientation
+
+**Key Advantages**:
+- No manual adjustment of input image size and angle required
+- No repeated adjustment of detection parameters and thresholds needed
+- One-click generation of corrected faces with specified size and ratio
+
+## 📸 Workflow Examples
+
+### InsightFace Mode
+![InsightFace Mode Workflow](workflow/facecorrector_workflow_insightface.png)
+
+### YOLO Mode
+![YOLO Mode Workflow](workflow/facecorrector_workflow_yolo.png)
+
 ## ✨ Features
 
-- 🎯 **Smart Face Detection**: Dual-engine detection with YOLO and InsightFace
-- 🔄 **Auto Rotation Correction**: Intelligently handles tilted, inverted, or side-facing faces
+- 🎯 **Smart Face Detection**: Integrated YOLO and InsightFace dual-engine detection
+- 🔄 **Automatic Correction**: Supports processing faces in various scenarios:
+  - Inverted faces (e.g., from upside-down photos)
+  - Tilted faces (over 10 degrees from horizontal)
+  - Side-view faces (large-angle profile shots)
+  - Faces with partial occlusion or closed eyes
 - ⚖️ **Precise Alignment**: Professional-grade face alignment using arcface algorithm
-- 🎭 **High-Quality Masks**: Multiple mask generation methods (jonathandinu, bisenet)
-- 📏 **Flexible Adjustment**: Precise face ratio control through face_ratio parameter
-- 💡 **Stable & Reliable**: Adapts to various lighting conditions, handles extreme angles
-
-## 📸 Demo
-
-![Basic Workflow Example](workflow/facecorrector.png)
+- 🎭 **Mask Generation**: Multiple mask generation methods (jonathandinu, bisenet)
+- 📏 **Ratio Control**: Precise control of face proportion in output images
 
 ## 🚀 Quick Start
 
@@ -56,6 +75,24 @@ pip install -r requirements.txt
 - Model files will be saved in the corresponding `ComfyUI/models/` directory
 - Ensure internet connectivity for model downloads
 
+### Required Models
+
+This node requires the following model files:
+
+1. YOLO Face Detection Model:
+   - Path: `ComfyUI/models/ultralytics/bbox/face_yolov8m.pt`
+   - Purpose: Fast and accurate face detection
+
+2. InsightFace Model:
+   - Path: `ComfyUI/models/insightface/models/buffalo_l`
+   - Purpose: Face analysis and landmark detection
+
+3. BiSeNet Model:
+   - Path: `ComfyUI/models/bisenet/resnet34.onnx`
+   - Purpose: Precise face segmentation mask generation
+
+These models will be downloaded automatically on first run. If download fails, please refer to the [Model Download Guide](docs/model_download_guide.md) for manual download.
+
 ## 📖 Usage Guide
 
 ### FaceCorrector Node
@@ -77,38 +114,22 @@ pip install -r requirements.txt
 ### FacePaster Node
 
 - **Input Parameters**:
-  - `original_image`: Original image
-  - `face_image`: Modified face image
-  - `warp_matrix`: Transformation matrix from FaceCorrector
+  - `image`: Original image
+  - `corrected_face`: Modified face image
+  - `face_mask`: Face mask for smooth blending
   - `use_mask`: Use mask (yes, no)
-  - `face_mask`: (Optional) Face mask for smooth blending
+  - `warp_matrix`: (Optional) Transformation matrix from FaceCorrector
 
 - **Output**:
   - `image`: Final composited image
 
 ## 🔧 Advanced Configuration
 
-### Auto Rotation Feature
-
-The auto-rotation feature intelligently handles faces at various abnormal angles:
-
-1. **Face Pose Estimation**: Precisely estimates face roll, yaw, and pitch angles through facial landmark analysis
-2. **Smart Rotation Decision**: Determines rotation necessity and angle based on pose estimation
-3. **High-Quality Rotation**: Uses Lanczos interpolation for high-quality image rotation, preserving details
-4. **Correction Validation**: Re-detects face and evaluates pose post-rotation, applying changes only if pose improves
-
-### Use Cases
-
-- **Inverted Faces**: Handles 180-degree inverted faces from upside-down photos
-- **Significant Tilt**: Corrects faces with noticeable roll tilt (over 10 degrees)
-- **Extreme Side View**: Adjusts severely side-facing faces (around 90 degrees)
-- **Special Cases**: Accurately estimates and corrects pose even with partial occlusion or closed eyes
-
 ### face_ratio Parameter
 
 The `face_ratio` parameter controls face proportion in the output image, ranging from 0.5 to 1.3:
-- Higher values make the face appear larger (closer)
-- Lower values make the face appear smaller (farther)
+- Higher values increase face proportion (more focus on facial features)
+- Lower values decrease face proportion (includes more background)
 
 ## 📋 FAQ
 
@@ -148,4 +169,18 @@ If you use this project in your research, please cite:
   year = {2025},
   url = {https://github.com/CHAOSEA/comfyui_facecorrector}
 }
-``` 
+```
+
+## 🌟 Support & Feedback
+
+If this node has been helpful in your workflow, please consider giving us a Star ⭐. Your support motivates us to keep improving!
+
+### Community Support
+
+- Having technical issues?
+- Need customization?
+- Want to share experiences?
+
+Join our QQ community group: 247228975
+
+We are committed to providing professional technical support and solutions for every user. 
